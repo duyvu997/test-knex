@@ -1,0 +1,62 @@
+- User
+    - role: 
+            none  
+            manager (runs a village)
+            admin (our team)
+    - age:
+    - achievements: 
+        - visitedVillages: []
+        - doneTrips: 
+    - followings:  
+    - followers:
+
+- Village
+    - villageName:
+    - villageLocation:
+    - photos:
+    - managers: 
+    - introductions:
+    - problems: 
+    - culture:
+
+- Plan
+  - trips: [tripId1, tripId2, tripId3],
+  - startDate:
+  - endDate:
+  - status: 
+
+- Trip
+    - planId: 
+    - startDate:
+    - endDate:
+    - status: Planed | ongoing | done  if done, it's no longer changeable
+    - members: []
+    - host:
+    - invitations:
+
+- Invitation
+    - type: internal | external 
+    - tripId: 
+    - expiredAt: time
+
+- Story 
+    - tripId:
+    - publisher:
+    - contents:
+    - photos:
+    - publishedAt: 
+    - title:
+    - likes: 
+
+- Activity:
+    - activityType: 
+
+- Comment: 
+
+- Like: 
+
+Upload
+
+Villager
+
+Payment

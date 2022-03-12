@@ -1,31 +1,26 @@
-const { User } = require('../../models');
+const userService = require('./user-service');
 
-const getUsers = (req, res, next) => {
-  User.findAll()
-    .then((users) =>
-      res.json({
-        ok: true,
-        message: 'Users found',
-        users,
-      })
-    )
-    .catch(next);
-};
-
-const login = async (req, res, next) => {
+const login = async (req, res) => {
   const { username, password } = req.body || {};
-  const result = await User.login(username, password);
+  const user = await userService.login(username, password);
 
-  return res.status(200).send(result);
+  return res.status(200).send({ ok: true, message: 'succeed', user });
 };
 
-const register = async (req, res, next) => {
+const register = async (req, res) => {
   const { username, email, password, role = 'none' } = req.body || {};
-  const result = await User.create({ username, email, password, role });
+  const user = await userService.register({ username, email, password, role });
 
-  return res
-    .status(201)
-    .send({ ok: true, message: 'created', user: result[0] });
+  return res.status(201).send({ ok: true, message: 'created', user });
 };
 
-module.exports = { getUsers, login, register };
+const update = async (req, res) => {
+  const props = req.body || {};
+  const requestUser = req.decodedUser;
+
+  const user = await userService.update(requestUser.userId, props);
+
+  return res.status(200).send({ ok: true, message: 'succeed', user });
+};
+
+module.exports = { login, register, update };

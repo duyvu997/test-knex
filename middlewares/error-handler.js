@@ -42,8 +42,8 @@ const badRequest = (err, req, res, next) => {
 
   res.status(BAD_REQUEST).send({
     ok: false,
-    message: err.message || 'Bad Request',
-    errors: [err],
+    message: 'Bad Request',
+    errors: [err.message],
   });
 };
 

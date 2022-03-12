@@ -1,7 +1,6 @@
 'use strict';
 
 const bcrypt = require('bcrypt');
-const { generateToken } = require('../middlewares/authentication');
 const createGuts = require('./model-guts');
 
 const name = 'User';
@@ -13,7 +12,12 @@ const selectableProps = [
   'updated_at',
   'created_at',
   'role',
-  'password'
+  'password',
+  'hometown',
+  'teammates',
+  'college',
+  'lifestyle',
+  'photos',
 ];
 
 const SALT_ROUNDS = 10;
@@ -40,9 +44,9 @@ module.exports = (knex) => {
 
   const create = (props) => beforeSave(props).then((user) => guts.create(user));
 
-  const verify = async (username, password) => {
+  const getAndVerify = async (username, password) => {
     const matchErrorMsg = 'Username or password do not match';
-    const user = await guts.findOne({username})
+    const user = await guts.findOne({ username });
 
     if (!user) throw matchErrorMsg;
 
@@ -53,16 +57,9 @@ module.exports = (knex) => {
     return user;
   };
 
-  const login = async (username, password) => {
-    const user = await verify(username, password);
-    const token = await generateToken({ userId: user.id, role: user.role });
-    return { token, user };
-  };
-
   return {
     ...guts,
     create,
-    verify,
-    login
+    getAndVerify,
   };
 };

@@ -1,6 +1,7 @@
 const TOKEN_ERROR_TYPE = {
   EXPIRE: 'TokenExpiredError',
 };
+
 const TOKEN_ERROR_MSG = {
   TOKEN_EXPIRED: 'Token expired',
   INVALID: 'Invalid token',

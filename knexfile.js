@@ -26,6 +26,9 @@ module.exports = {
       tableName: 'knex_migrations',
       directory: `${__dirname}/db/migrations`,
     },
+    seeds: {
+      directory: `${__dirname}/db/seeds`,
+    },
   },
   production: {
     client: 'postgresql',
@@ -40,6 +43,9 @@ module.exports = {
     },
     migrations: {
       tableName: 'knex_migrations',
+    },
+    seeds: {
+      directory: `${__dirname}/db/seeds`,
     },
   },
 };

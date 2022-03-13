@@ -41,12 +41,12 @@
 
 - Story 
     - tripId:
+    - title:
     - publisher:
     - contents:
-    - photos:
     - publishedAt: 
-    - title:
-    - likes: 
+    - background: 
+    - photos:
 
 - Activity:
     - activityType: 

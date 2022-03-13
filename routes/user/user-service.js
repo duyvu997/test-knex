@@ -1,8 +1,15 @@
-const { generateToken } = require('../../middlewares/authentication');
 const { User } = require('../../models');
-const { createError } = require('../../common/error-utils');
+const { generateToken } = require('../../middlewares/authentication');
+const { createError, NOT_FOUND } = require('../../common/error-utils');
 
 const login = async (username, password) => {
+  if (!username) {
+    throw createError(400, 'missing username');
+  }
+  if (!password) {
+    throw createError(400, 'missing password');
+  }
+
   const user = await User.getAndVerify(username, password);
   const token = generateToken({ userId: user.id, role: user.role });
   delete user.password;
@@ -10,7 +17,17 @@ const login = async (username, password) => {
   return { ...user, token };
 };
 
-const register = async () => {
+const register = async ({ username, email, password, role }) => {
+  if (!username) {
+    throw createError(400, 'missing username');
+  }
+  if (!email) {
+    throw createError(400, 'missing email');
+  }
+  if (!password) {
+    throw createError(400, 'missing password');
+  }
+
   const result = await User.create({ username, email, password, role });
 
   const token = generateToken({
@@ -26,7 +43,7 @@ const register = async () => {
 
 const update = async (
   id,
-  { hometown, college, lifestyle, datingStandard: teammates, photos }
+  { hometown, college, lifestyle, datingStandard, photos }
 ) => {
   if (lifestyle && !Array.isArray(lifestyle)) {
     throw createError(400, 'lifestyle must be a array');
@@ -36,7 +53,7 @@ const update = async (
     throw createError(400, 'photos must be a array');
   }
 
-  if (teammates && !Array.isArray(teammates)) {
+  if (datingStandard && !Array.isArray(datingStandard)) {
     throw createError(400, 'datingStandard must be a array');
   }
 
@@ -44,7 +61,7 @@ const update = async (
     hometown,
     college,
     lifestyle,
-    teammates,
+    dating_standard: datingStandard,
     photos,
   });
 
@@ -53,9 +70,41 @@ const update = async (
   return result[0];
 };
 
-const getById = async () => {};
+const getById = async (caller, targetUser) => {
+  const user =
+    Number(caller) === Number(targetUser)
+      ? await getMe(caller)
+      : await getOtherUserById(targetUser);
 
-const getMe = async () => {};
+  if (!user) {
+    throw createError(NOT_FOUND, 'user not found');
+  }
+
+  user.achievements = [
+    {
+      iconUrl: 'http://localhost:3000/test-url',
+      collectedAt: '2022-03-12T07:05:29.940Z',
+      title: 'King of the hills',
+      conntent: '20 mountains',
+    },
+    {
+      iconUrl: 'http://localhost:3000/test-url',
+      collectedAt: '2022-03-13T07:05:29.940Z',
+      title: 'Rosette',
+      conntent: '10 villages',
+    },
+  ];
+
+  return user;
+};
+
+// --------- support funcs -----------
+
+const getMe = async (userId) => {
+  return User.findOne({ id: userId });
+};
+
+const getOtherUserById = async (userId) => {};
 
 const deleteUser = async () => {};
 

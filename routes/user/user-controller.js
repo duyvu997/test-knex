@@ -23,4 +23,13 @@ const update = async (req, res) => {
   return res.status(200).send({ ok: true, message: 'succeed', user });
 };
 
-module.exports = { login, register, update };
+const getById = async (req, res) => {
+  const userId = req.params.userId || {};
+  const requestUser = req.decodedUser;
+
+  const user = await userService.getById(requestUser.userId, userId);
+
+  return res.status(200).send({ ok: true, message: 'succeed', user });
+};
+
+module.exports = { login, register, update, getById };

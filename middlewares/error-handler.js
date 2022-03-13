@@ -5,8 +5,9 @@ const {
   CONFLICT,
   NOT_FOUND,
   UNPROCESSABLE,
-  GENERIC_ERROR
-} = require('../common/error-utils')
+  GENERIC_ERROR,
+} = require('../common/error-utils');
+
 const unauthorized = (err, req, res, next) => {
   if (err.status !== UNAUTHORIZED) return next(err);
 
@@ -92,8 +93,8 @@ const exportableHandlers = {
   conflict,
   badRequest,
   unprocessable,
-  genericError,
   notFound,
+  genericError,
   catchall,
 };
 
@@ -104,5 +105,5 @@ const all = Object.keys(exportableHandlers).map(
 
 module.exports = {
   ...exportableHandlers,
-  all
-}
+  all,
+};

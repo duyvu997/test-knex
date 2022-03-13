@@ -4,6 +4,7 @@ const router = new Router();
 const { authenticate } = require('../../middlewares/authentication');
 
 router.put('/', authenticate, userController.update);
+router.get('/:userId', authenticate, userController.getById);
 router.post('/login', userController.login);
 router.post('/register', userController.register);
 

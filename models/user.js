@@ -14,7 +14,7 @@ const selectableProps = [
   'role',
   'password',
   'hometown',
-  'teammates',
+  'dating_standard',
   'college',
   'lifestyle',
   'photos',

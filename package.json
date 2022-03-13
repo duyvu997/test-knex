@@ -10,7 +10,7 @@
     "prepare": "export $([ -f '.env' ] && cat .env | xargs)",
     "db:migrate-up": "yarn run prepare && npx knex --knexfile knexfile.js migrate:up --env ${NODE_ENV:=development}",
     "db:migrate-down": "yarn run prepare && npx knex --knexfile knexfile.js migrate:down --env ${NODE_ENV:=development}",
-    "db:seed": "yarn run prepare npx knex --knexfile knexfile.js seed:run --env ${NODE_ENV:=development}",
+    "db:seed": "yarn run prepare && npx knex --knexfile knexfile.js seed:run --env ${NODE_ENV:=development}",
     "heroku-postbuild": "yarn run db:migrate-up"
   },
   "repository": {

@@ -7,7 +7,7 @@ exports.seed = (knex) =>
       {
         trip_id: 1,
         title: 'first trips',
-        publisher: 'admin',
+        publisher: '39aee2d0-a875-417f-a6fe-fc68ae9c8787',
         published_at: '2022-03-12 13:45:14.226 +0700',
         background:
           'https://bsmedia.business-standard.com/_media/bs/img/article/2020-12/11/full/1607655600-5776.jpg',
@@ -19,7 +19,7 @@ exports.seed = (knex) =>
       {
         trip_id: 2,
         title: 'first trips',
-        publisher: 'admin',
+        publisher: '39aee2d0-a875-417f-a6fe-fc68ae9c8787',
         published_at: '2022-03-12 13:45:14.226 +0700',
         background:
           'https://bsmedia.business-standard.com/_media/bs/img/article/2020-12/11/full/1607655600-5776.jpg',
@@ -31,7 +31,7 @@ exports.seed = (knex) =>
       {
         trip_id: 3,
         title: 'first trips',
-        publisher: 'admin',
+        publisher: '39aee2d0-a875-417f-a6fe-fc68ae9c8787',
         published_at: '2022-03-12 13:45:14.226 +0700',
         background:
           'https://bsmedia.business-standard.com/_media/bs/img/article/2020-12/11/full/1607655600-5776.jpg',

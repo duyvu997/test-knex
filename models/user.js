@@ -2,6 +2,7 @@
 
 const bcrypt = require('bcrypt');
 const createGuts = require('./model-guts');
+const { createError, BAD_REQUEST } = require('../common/error-utils');
 
 const name = 'User';
 const tableName = 'users';
@@ -18,6 +19,10 @@ const selectableProps = [
   'college',
   'lifestyle',
   'photos',
+  'name',
+  'bio',
+  'age',
+  'gender',
 ];
 
 const SALT_ROUNDS = 10;
@@ -48,11 +53,11 @@ module.exports = (knex) => {
     const matchErrorMsg = 'Username or password do not match';
     const user = await guts.findOne({ username });
 
-    if (!user) throw matchErrorMsg;
+    if (!user) throw createError(BAD_REQUEST, matchErrorMsg);
 
     const isMatch = await verifyPassword(password, user.password);
 
-    if (!isMatch) throw matchErrorMsg;
+    if (!isMatch) throw createError(BAD_REQUEST, matchErrorMsg);
 
     return user;
   };

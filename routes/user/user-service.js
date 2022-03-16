@@ -28,6 +28,13 @@ const register = async ({ username, email, password, role }) => {
     throw createError(400, 'missing password');
   }
 
+  let user = await User.findOne((builder) =>
+    builder.where({ username }).orWhere({ email })
+  );
+
+  if (user) {
+    throw createError(400, 'username or email already exist');
+  }
   const result = await User.create({ username, email, password, role });
 
   const token = generateToken({
@@ -35,7 +42,7 @@ const register = async ({ username, email, password, role }) => {
     role: result[0].role,
   });
 
-  const user = result[0];
+  user = result[0];
   delete user.password;
 
   return { ...user, token };
@@ -43,7 +50,17 @@ const register = async ({ username, email, password, role }) => {
 
 const update = async (
   id,
-  { hometown, college, lifestyle, datingStandard, photos }
+  {
+    hometown,
+    college,
+    lifestyle,
+    datingStandard,
+    photos,
+    bio,
+    name,
+    age,
+    gender,
+  }
 ) => {
   if (lifestyle && !Array.isArray(lifestyle)) {
     throw createError(400, 'lifestyle must be a array');
@@ -57,12 +74,21 @@ const update = async (
     throw createError(400, 'datingStandard must be a array');
   }
 
+  if (gender && !['male', 'female', 'other'].includes(gender)) {
+    throw createError(400, `gender: [ male, female, other ]`);
+    
+  }
+
   const result = await User.update(id, {
     hometown,
     college,
     lifestyle,
     dating_standard: datingStandard,
     photos,
+    bio,
+    name,
+    gender,
+    age,
   });
 
   delete result[0].password;
@@ -72,7 +98,7 @@ const update = async (
 
 const getById = async (caller, targetUser) => {
   const user =
-    Number(caller) === Number(targetUser)
+    String(caller) === String(targetUser)
       ? await getMe(caller)
       : await getOtherUserById(targetUser);
 

@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/duyvu997/express-init-template#readme",
   "dependencies": {
+    "@socket.io/redis-adapter": "^7.1.0",
     "aws-sdk": "^2.1089.0",
     "axios": "^0.24.0",
     "bcrypt": "^5.0.1",
@@ -37,7 +38,9 @@
     "fs": "^0.0.1-security",
     "jsonwebtoken": "^8.5.1",
     "knex": "^1.0.3",
-    "pg": "^8.7.1"
+    "pg": "^8.7.1",
+    "redis": "^4.0.4",
+    "socket.io": "^4.4.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"

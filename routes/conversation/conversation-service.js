@@ -1,5 +1,6 @@
 const { Message, Conversation } = require('../../models');
 const { createError, NOT_FOUND } = require('../../common/error-utils');
+const userSerive = require('../user/user-service');
 
 const getConversationMessages = async (conversationId) => {
   await getById(conversationId);
@@ -24,13 +25,14 @@ const addMember = async (user, conversationId) => {
   if (!members.includes(user.id.toString())) {
     const newMem = {
       id: user.id,
+      name: user.name || '',
       username: user.username,
       avatar: (user.photos && user.photos[0]) || '',
     };
     const temp = conversation.members
       ? [...conversation.members, newMem]
       : [newMem];
-    
+
     const newMembers = temp.map((mem) => JSON.stringify(mem));
 
     return Conversation.update(conversationId, {
@@ -45,8 +47,23 @@ const getById = async (conversationId) => {
   if (!conversation) {
     throw createError(NOT_FOUND, 'conversation not found');
   }
-  const members =
-    conversation.members && conversation.members.map((mem) => JSON.parse(mem));
+
+  const memberIds =
+    conversation.members &&
+    conversation.members.map((mem) => {
+      const temp = JSON.parse(mem);
+      return temp.id;
+    });
+
+  const users = await userSerive.findAllUserIn(memberIds);
+
+  const members = users.map((user) => ({
+    username: user.username || '',
+    id: user.id,
+    name: user.name || '',
+    avatar: user.photos && user.photos[0],
+  }));
+
   return { ...conversation, members };
 };
 

@@ -76,10 +76,9 @@
         if (input.value) {
           const data = JSON.stringify({
             conversationId: 1,
-            userId: 'b019234f-6585-426a-8c23-66780d607891',
-            content: input.value,
+            userId: 'c7fe9ce8-e849-4f3b-bb1c-6b9a6b715e66',
           });
-          socket.emit('message', data);
+          socket.emit('join-conversation', data);
           input.value = '';
         }
       });

@@ -1,6 +1,10 @@
 const { User } = require('../../models');
 const { generateToken } = require('../../middlewares/authentication');
-const { createError, NOT_FOUND } = require('../../common/error-utils');
+const {
+  createError,
+  NOT_FOUND,
+  BAD_REQUEST,
+} = require('../../common/error-utils');
 
 const login = async (username, password) => {
   if (!username) {
@@ -76,7 +80,6 @@ const update = async (
 
   if (gender && !['male', 'female', 'other'].includes(gender)) {
     throw createError(400, `gender: [ male, female, other ]`);
-    
   }
 
   const result = await User.update(id, {
@@ -97,6 +100,10 @@ const update = async (
 };
 
 const getById = async (caller, targetUser) => {
+  if (!caller || !targetUser) {
+    throw createError(BAD_REQUEST, 'invalid user');
+  }
+
   const user =
     String(caller) === String(targetUser)
       ? await getMe(caller)
@@ -124,6 +131,10 @@ const getById = async (caller, targetUser) => {
   return user;
 };
 
+const findAllUserIn = async (userIds) => {
+  return User.find((builder) => builder.whereIn('id', userIds));
+};
+
 // --------- support funcs -----------
 
 const getMe = async (userId) => {
@@ -141,4 +152,5 @@ module.exports = {
   getById,
   getMe,
   deleteUser,
+  findAllUserIn,
 };

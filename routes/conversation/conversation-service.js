@@ -18,8 +18,8 @@ const saveMessage = async ({ conversationId, content, sender, type }) => {
 
 const addMember = async (user, conversationId) => {
   const conversation = await getById(conversationId);
-
-  const members = conversation.members.map((mem) => mem.id);
+  const members =
+    (conversation.members && conversation.members.map((mem) => mem.id)) || [];
 
   if (!members.includes(user.id.toString())) {
     const newMem = {
@@ -27,10 +27,11 @@ const addMember = async (user, conversationId) => {
       username: user.username,
       avatar: (user.photos && user.photos[0]) || '',
     };
-
-    const newMembers = [...conversation.members, newMem].map((mem) =>
-      JSON.stringify(mem)
-    );
+    const temp = conversation.members
+      ? [...conversation.members, newMem]
+      : [newMem];
+    
+    const newMembers = temp.map((mem) => JSON.stringify(mem));
 
     return Conversation.update(conversationId, {
       members: newMembers,

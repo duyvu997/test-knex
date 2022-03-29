@@ -12,10 +12,16 @@ router.get('/metadata', (req, res) => {
 });
 
 router.get('/home', (req, res) => {
+  const { stories, trip_invitations } = homePageData;
+  const story = stories.map((st) => ({ ...st, type: 'STORY' }));
+  const invite = trip_invitations.map((inv) => ({
+    ...inv,
+    type: 'INVITATION',
+  }));
   return res.status(200).send({
     ok: true,
     message: 'succeed',
-    data: homePageData,
+    data: [...story, ...invite],
   });
 });
 

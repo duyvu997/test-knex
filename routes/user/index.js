@@ -8,8 +8,8 @@ router.get('/:userId', authenticate, userController.getById);
 router.get('/:userId/stories', authenticate, userController.getUserStories);
 router.post('/login', userController.login);
 router.post('/register', userController.register);
-// router.get('/', (req, res) => {
-//   res.sendFile(__dirname + '/index.html');
-// });
+router.get('/', (req, res) => {
+  res.sendFile(__dirname + '/index.html');
+});
 
 module.exports = router;

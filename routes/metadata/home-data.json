@@ -3,43 +3,62 @@
     {
       "trip_id": 1,
       "title": "first trips",
-      "publisher": "39aee2d0-a875-417f-a6fe-fc68ae9c8787",
-      "published_at": "2022-03-12 13:45:14.226 +0700",
+      "publisher": {
+        "id": "39aee2d0-a875-417f-a6fe-fc68ae9c8787",
+        "avatar": "https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/avatars/57/5785bbcb4468b49b887c3c3150768c561712ccab_full.jpg",
+        "name": "David",
+        "gender": "male"
+      },
+      "published_at": "2022-03-12T13:45:14.226+07:00",
       "background": "https://bsmedia.business-standard.com/_media/bs/img/article/2020-12/11/full/1607655600-5776.jpg",
       "photos": [
         "https://bsmedia.business-standard.com/_media/bs/img/article/2020-12/11/full/1607655600-5776.jpg"
       ],
-      "contents": "Contrary"
+      "contents": "Contrary",
+      "id": 1
     },
     {
       "trip_id": 2,
       "title": "first trips",
-      "publisher": "39aee2d0-a875-417f-a6fe-fc68ae9c8787",
-      "published_at": "2022-03-12 13:45:14.226 +0700",
+      "publisher": {
+        "id": "b019234f-6585-426a-8c23-66780d607891",
+        "avatar": "https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/avatars/57/5785c3a8b996fe2c1d08c95475f0ca007906ae81_full.jpg",
+        "name": "Maya",
+        "gender": "female"
+      },
+      "published_at": "2022-03-12T13:45:14.226+07:00",
       "background": "https://bsmedia.business-standard.com/_media/bs/img/article/2020-12/11/full/1607655600-5776.jpg",
       "photos": [
         "https://bsmedia.business-standard.com/_media/bs/img/article/2020-12/11/full/1607655600-5776.jpg"
       ],
-      "contents": "Contrary"
+      "contents": "Contrary",
+      "id": 2
     },
     {
       "trip_id": 3,
       "title": "first trips",
-      "publisher": "39aee2d0-a875-417f-a6fe-fc68ae9c8787",
-      "published_at": "2022-03-12 13:45:14.226 +0700",
+      "publisher": {
+        "id": "c7fe9ce8-e849-4f3b-bb1c-6b9a6b715e66",
+        "avatar": "https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/avatars/57/578302855661b49101547a29af0e56c2a6cb1a47_full.jpg",
+        "name": "Thomas",
+        "gender": "male"
+      },
+      "published_at": "2022-03-12T13:45:14.226+07:00",
       "background": "https://bsmedia.business-standard.com/_media/bs/img/article/2020-12/11/full/1607655600-5776.jpg",
       "photos": [
         "https://bsmedia.business-standard.com/_media/bs/img/article/2020-12/11/full/1607655600-5776.jpg"
       ],
-      "contents": "Contrary"
+      "contents": "Contrary",
+      "id": 3
     }
   ],
   "trip_invitations": [
     {
       "id": 1,
       "trip_id": 1,
-      "start_date": "2022-03-12 13:45:14.226 +0700",
-      "end_date": "2022-03-12 13:45:14.226 +0700",
+      "title": "Would you like to join this trip",
+      "start_date": "2022-03-12T13:45:14.226+07:00",
+      "end_date": "2022-03-12T13:45:14.226+07:00",
       "location": "New Novellahaven, Moldova",
       "village_id": 1,
       "plan_id": 1,
@@ -48,13 +67,46 @@
       "accommodation": [],
       "host": "Guy Hawkins",
       "price": "600",
-      "members": []
+      "members": [],
+      "user": {
+        "id": "39aee2d0-a875-417f-a6fe-fc68ae9c8787",
+        "username": "tom07",
+        "email": "tom07@gmail.com",
+        "updated_at": "2022-03-15T10:25:53.353Z",
+        "created_at": "2022-03-15T10:25:53.353Z",
+        "role": "none",
+        "password": "$2b$10$enU59zBlmDpjHovz1iL6jOL6IB1F3E1oSEKWPnxXoTSwtVx.j7GW2",
+        "hometown": "Hanoi1212",
+        "dating_standard": ["abc", "xyz"],
+        "college": "HCMNU",
+        "lifestyle": ["learn"],
+        "photos": ["12121"],
+        "name": "duyvu",
+        "bio": "21212121212121212",
+        "age": 1990,
+        "gender": "male",
+        "achievements": [
+          {
+            "iconUrl": "http://localhost:3000/test-url",
+            "collectedAt": "2022-03-12T07:05:29.940Z",
+            "title": "King of the hills",
+            "conntent": "20 mountains"
+          },
+          {
+            "iconUrl": "http://localhost:3000/test-url",
+            "collectedAt": "2022-03-13T07:05:29.940Z",
+            "title": "Rosette",
+            "conntent": "10 villages"
+          }
+        ]
+      }
     },
     {
       "id": 2,
       "trip_id": 2,
-      "start_date": "2022-03-12 13:45:14.226 +0700",
-      "end_date": "2022-03-12 13:45:14.226 +0700",
+      "title": "Would you like to join this trip",
+      "start_date": "2022-03-12T13:45:14.226+07:00",
+      "end_date": "2022-03-12T13:45:14.226+07:00",
       "location": "Twin Falls",
       "village_id": 2,
       "plan_id": 2,
@@ -63,13 +115,46 @@
       "accommodation": [],
       "host": "Tom",
       "price": "500",
-      "members": []
+      "members": [],
+      "user": {
+        "id": "39aee2d0-a875-417f-a6fe-fc68ae9c8787",
+        "username": "tom07",
+        "email": "tom07@gmail.com",
+        "updated_at": "2022-03-15T10:25:53.353Z",
+        "created_at": "2022-03-15T10:25:53.353Z",
+        "role": "none",
+        "password": "$2b$10$enU59zBlmDpjHovz1iL6jOL6IB1F3E1oSEKWPnxXoTSwtVx.j7GW2",
+        "hometown": "Hanoi1212",
+        "dating_standard": ["abc", "xyz"],
+        "college": "HCMNU",
+        "lifestyle": ["learn"],
+        "photos": ["12121"],
+        "name": "duyvu",
+        "bio": "21212121212121212",
+        "age": 1990,
+        "gender": "male",
+        "achievements": [
+          {
+            "iconUrl": "http://localhost:3000/test-url",
+            "collectedAt": "2022-03-12T07:05:29.940Z",
+            "title": "King of the hills",
+            "conntent": "20 mountains"
+          },
+          {
+            "iconUrl": "http://localhost:3000/test-url",
+            "collectedAt": "2022-03-13T07:05:29.940Z",
+            "title": "Rosette",
+            "conntent": "10 villages"
+          }
+        ]
+      }
     },
     {
       "id": 3,
       "trip_id": 1,
-      "start_date": "2022-03-12 13:45:14.226 +0700",
-      "end_date": "2022-03-12 13:45:14.226 +0700",
+      "title": "Would you like to join this trip",
+      "start_date": "2022-03-12T13:45:14.226+07:00",
+      "end_date": "2022-03-12T13:45:14.226+07:00",
       "location": "New Novellahaven, Moldova",
       "village_id": 1,
       "plan_id": 3,
@@ -78,13 +163,46 @@
       "accommodation": [],
       "host": "Aurora",
       "price": "400",
-      "members": []
+      "members": [],
+      "user": {
+        "id": "39aee2d0-a875-417f-a6fe-fc68ae9c8787",
+        "username": "tom07",
+        "email": "tom07@gmail.com",
+        "updated_at": "2022-03-15T10:25:53.353Z",
+        "created_at": "2022-03-15T10:25:53.353Z",
+        "role": "none",
+        "password": "$2b$10$enU59zBlmDpjHovz1iL6jOL6IB1F3E1oSEKWPnxXoTSwtVx.j7GW2",
+        "hometown": "Hanoi1212",
+        "dating_standard": ["abc", "xyz"],
+        "college": "HCMNU",
+        "lifestyle": ["learn"],
+        "photos": ["12121"],
+        "name": "duyvu",
+        "bio": "21212121212121212",
+        "age": 1990,
+        "gender": "male",
+        "achievements": [
+          {
+            "iconUrl": "http://localhost:3000/test-url",
+            "collectedAt": "2022-03-12T07:05:29.940Z",
+            "title": "King of the hills",
+            "conntent": "20 mountains"
+          },
+          {
+            "iconUrl": "http://localhost:3000/test-url",
+            "collectedAt": "2022-03-13T07:05:29.940Z",
+            "title": "Rosette",
+            "conntent": "10 villages"
+          }
+        ]
+      }
     },
     {
       "id": 4,
       "trip_id": 2,
-      "start_date": "2022-03-12 13:45:14.226 +0700",
-      "end_date": "2022-03-12 13:45:14.226 +0700",
+      "title": "Would you like to join this trip",
+      "start_date": "2022-03-12T13:45:14.226+07:00",
+      "end_date": "2022-03-12T13:45:14.226+07:00",
       "location": "Twin Falls",
       "village_id": 2,
       "plan_id": 4,
@@ -93,7 +211,39 @@
       "accommodation": [],
       "host": "Peter",
       "price": "300",
-      "members": []
+      "members": [],
+      "user": {
+        "id": "39aee2d0-a875-417f-a6fe-fc68ae9c8787",
+        "username": "tom07",
+        "email": "tom07@gmail.com",
+        "updated_at": "2022-03-15T10:25:53.353Z",
+        "created_at": "2022-03-15T10:25:53.353Z",
+        "role": "none",
+        "password": "$2b$10$enU59zBlmDpjHovz1iL6jOL6IB1F3E1oSEKWPnxXoTSwtVx.j7GW2",
+        "hometown": "Hanoi1212",
+        "dating_standard": ["abc", "xyz"],
+        "college": "HCMNU",
+        "lifestyle": ["learn"],
+        "photos": ["12121"],
+        "name": "duyvu",
+        "bio": "21212121212121212",
+        "age": 1990,
+        "gender": "male",
+        "achievements": [
+          {
+            "iconUrl": "http://localhost:3000/test-url",
+            "collectedAt": "2022-03-12T07:05:29.940Z",
+            "title": "King of the hills",
+            "conntent": "20 mountains"
+          },
+          {
+            "iconUrl": "http://localhost:3000/test-url",
+            "collectedAt": "2022-03-13T07:05:29.940Z",
+            "title": "Rosette",
+            "conntent": "10 villages"
+          }
+        ]
+      }
     }
   ]
 }

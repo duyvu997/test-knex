@@ -1,0 +1,137 @@
+{
+  "trips": [
+    {
+      "id": 1,
+      "trip_id": 1,
+      "title": "Hiking a mountain",
+      "start_date": "2022-03-12T13:45:14.226+07:00",
+      "end_date": "2022-03-15T13:45:14.226+07:00",
+      "location": "New Novellahaven, Moldova",
+      "introduction": "Aut dolores aliquam vel explicabo eligendi deleniti quaerat tempora quidem. Quos alias similique et ut consequuntur in. Odio eum ipsum enim rem et. ",
+      "plan_image": "https://bsmedia.business-standard.com/_media/bs/img/article/2020-12/11/full/1607655600-5776.jpg",
+      "tourism_activities": [
+        {
+          "activity_background": "",
+          "objective": "Mountain hiking",
+          "description": "Eos ut quia est impedit maxime reiciendis repudia...",
+          "host": {
+            "name": "Kshlerin",
+            "avatar": "",
+            "job_title": "Hiking guide"
+          }
+        },
+        {
+          "activity_background": "",
+          "objective": "Stargazing",
+          "description": "Eos ut quia est impedit maxime reiciendis repudia...",
+          "host": {
+            "name": "Kshlerin",
+            "avatar": "",
+            "job_title": "Start guide"
+          }
+        }
+      ],
+      "volunteer_acctivities": [
+        {
+          "activity_background": "",
+          "objective": "Book donating",
+          "description": "Help build a library of 100 books",
+          "host": {
+            "name": "Kshlerin",
+            "avatar": "",
+            "job_title": "Library keeper"
+          }
+        }
+      ],
+      "schedule": [
+        {
+          "days": 1,
+          "actions": [
+            "Meet at station",
+            "Lunch free time",
+            "Mountain hiking",
+            "Dinner party with villagers"
+          ]
+        },
+        {
+          "days": 2,
+          "actions": [
+            "Nostrum sint tempore.",
+            "Eveniet non in.",
+            "Nisi atque molestiae voluptate",
+            "Eos sed ipsa atque."
+          ]
+        },
+        {
+          "days": 3,
+          "actions": [
+            "Nostrum sint tempore.",
+            "Eveniet non in.",
+            "Nisi atque molestiae voluptate",
+            "Eos sed ipsa atque.",
+            "Dinner party with villagers"
+          ]
+        }
+      ],
+      "accommodation": [],
+      "hosts": [
+        {
+            "name": "Kshlerin",
+            "avatar": "",
+            "job_title": "Library keeper"
+          },
+        {
+          "name": "Kshlerin",
+          "avatar": "",
+          "job_title": "House owner"
+        },
+        {
+          "name": "Kshlerin",
+          "avatar": "",
+          "job_title": "Food provider"
+        }
+      ],
+      "prices": {
+        "minimumPerson": 1,
+        "maximumPerson": 8,
+        "currency": "USD",
+        "details": [
+          {
+            "personsCount": 1,
+            "price": 3000
+          },
+          {
+            "personsCount": 3,
+            "price": 800
+          },
+          {
+            "personsCount": 8,
+            "price": 300
+          }
+        ]
+      },
+      "disclaimers": [
+        "Be respectful to the locals ",
+        "There may be shortages of water and/or internet, but that's part of the experience ",
+        "Don't step into rooms with your shoes on"
+      ],
+      "members": [
+        {
+          "name": "tom",
+          "avatar": "",
+          "id": "345"
+        },
+        {
+          "name": "cat",
+          "avatar": "",
+          "id": "234"
+        },
+        {
+          "name": "mouse",
+          "avatar": "",
+          "id": "123"
+        }
+      ]
+    }
+  ]
+}

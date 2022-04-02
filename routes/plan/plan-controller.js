@@ -16,8 +16,9 @@ const getById = async (req, res) => {
 };
 
 const update = async (req, res) => {
-  const conversationId = req.params.conversationId;
-  const result = await planService.getById(conversationId);
+  const planId = req.params.planId;
+  const planProperties = req.body;
+  const result = await planService.update(planId, planProperties);
 
   return res.status(200).send({ ok: true, message: 'ok', data: result });
 };
@@ -29,4 +30,10 @@ const deletePlan = async (req, res) => {
   return res.status(200).send({ ok: true, message: 'ok', data: result });
 };
 
-module.exports = { create, getById, update, deletePlan };
+const getAll = async (req, res) => {
+  const result = await planService.getAll();
+
+  return res.status(200).send({ ok: true, message: 'ok', data: result });
+};
+
+module.exports = { create, getById, update, deletePlan, getAll };

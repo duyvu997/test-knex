@@ -145,6 +145,10 @@ const getOtherUserById = async (userId) => {};
 
 const deleteUser = async () => {};
 
+const getAll = async () => {
+  return User.findAll({});
+};
+
 module.exports = {
   login,
   register,
@@ -153,4 +157,5 @@ module.exports = {
   getMe,
   deleteUser,
   findAllUserIn,
+  getAll,
 };

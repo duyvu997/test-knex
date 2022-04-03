@@ -37,8 +37,14 @@ const getUserStories = async (req, res) => {
   const userId = req.params.userId || {};
   const requestUser = req.decodedUser;
   const stories = await storyService.getById(requestUser.userId, userId);
-  
+
   return res.status(200).send({ ok: true, message: 'succeed', data: stories });
 };
 
-module.exports = { login, register, update, getById, getUserStories };
+const getAll = async (req, res) => {
+  const users = await userService.getAll();
+
+  return res.status(200).send({ ok: true, message: 'succeed', data: users });
+};
+
+module.exports = { login, register, update, getById, getUserStories, getAll };

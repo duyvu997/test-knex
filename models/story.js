@@ -7,11 +7,12 @@ const tableName = 'stories';
 const selectableProps = [
   'id',
   'trip_id',
+  'title',
   'publisher',
   'published_at',
   'background',
   'photos',
-  'contents',
+  'sections',
 ];
 
 module.exports = (knex) => {
@@ -29,7 +30,11 @@ module.exports = (knex) => {
     );
 
     return knex('stories')
-      .select([...cloneSelectableProps, 'users.name', 'users.photos as user_photos'])
+      .select([
+        ...cloneSelectableProps,
+        'users.name',
+        'users.photos as user_photos',
+      ])
       .where({ 'stories.publisher': userId })
       .join('users', 'stories.publisher', 'users.id');
   };

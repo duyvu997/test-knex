@@ -5,6 +5,7 @@ const router = new Router();
 router.get('/:planId', planController.getById);
 router.get('/', planController.getAll);
 router.post('/', planController.create);
+router.post('/planId/initiative', planController.initTrip);
 router.patch('/:planId', planController.update);
 router.delete('/:planId', planController.getById);
 

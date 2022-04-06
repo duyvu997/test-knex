@@ -36,4 +36,12 @@ const getAll = async (req, res) => {
   return res.status(200).send({ ok: true, message: 'ok', data: result });
 };
 
-module.exports = { create, getById, update, deletePlan, getAll };
+const initTrip = async (req, res) => {
+  const planId = req.params.planId;
+  const decodedUser = req.decodedUser;
+  const result = await planService.createTrip(planId, decodedUser.id);
+
+  return res.status(200).send({ ok: true, message: 'ok', data: result });
+};
+
+module.exports = { create, getById, update, deletePlan, getAll, initTrip };

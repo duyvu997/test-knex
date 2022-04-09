@@ -1,12 +1,13 @@
 'use strict';
 
-const createGuts = require('./model-guts');
+const createGuts = require('../model-guts');
 
 const name = 'Plan';
 const tableName = 'plans';
 const selectableProps = [
   'id',
   'village_id',
+  'background',
   'heading',
   'location',
   'introduction',

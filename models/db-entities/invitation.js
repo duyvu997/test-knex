@@ -1,6 +1,6 @@
 'use strict';
 
-const createGuts = require('./model-guts');
+const createGuts = require('../model-guts');
 
 const name = 'Invitation';
 const tableName = 'invitations';

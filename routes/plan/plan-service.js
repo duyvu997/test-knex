@@ -1,5 +1,7 @@
-const { Plan } = require('../../models');
+const { Plan, Trip } = require('../../models');
 const { createError, NOT_FOUND } = require('../../common/error-utils');
+const cuid = require('cuid');
+const userService = require('../user/user-service');
 
 const getById = async (planId) => {
   const plan = await Plan.findOne({ id: planId });
@@ -7,9 +9,10 @@ const getById = async (planId) => {
     throw createError(NOT_FOUND, 'plan not found');
   }
 
-  const parsedLocation = JSON.parse(plan.location || '');
-  const parsedVolunteer = JSON.parse(plan.volunteer_activities || '');
-  const parsedPrices = JSON.parse(plan.prices || '');
+  const parsedLocation = plan.location && JSON.parse(plan.location || '');
+  const parsedVolunteer =
+    plan.volunteer_activities && JSON.parse(plan.volunteer_activities || '');
+  const parsedPrices = plan.prices && JSON.parse(plan.prices || '');
 
   return {
     ...plan,
@@ -28,6 +31,7 @@ const create = async (planProperties) => {
     prices,
     preparing,
     villageId,
+    background,
   } = planProperties;
   // todo: find by village.
 
@@ -35,7 +39,7 @@ const create = async (planProperties) => {
   const parsedVolunteer = location && JSON.stringify(volunteer_activities);
   const parsedPrices = location && JSON.stringify(prices);
 
-  const result = await Plan.create({
+  return Plan.create({
     village_id: villageId,
     heading,
     location: parsedLocation,
@@ -44,10 +48,8 @@ const create = async (planProperties) => {
     prices: parsedPrices,
     status: 'open',
     preparing,
+    background,
   });
-
-  console.log(result);
-  return result;
 };
 
 const getAll = async () => {
@@ -84,10 +86,12 @@ const update = async (planId, planProperties) => {
     prices,
     preparing,
     villageId,
+    background,
   } = planProperties;
   // todo: find by village.
   const parsedLocation = location && JSON.stringify(location);
-  const parsedVolunteer = volunteer_activities && JSON.stringify(volunteer_activities);
+  const parsedVolunteer =
+    volunteer_activities && JSON.stringify(volunteer_activities);
   const parsedPrices = prices && JSON.stringify(prices);
 
   return Plan.update(planId, {
@@ -99,10 +103,26 @@ const update = async (planId, planProperties) => {
     prices: parsedPrices,
     status: 'open',
     preparing,
+    background,
   });
 };
 
-const createTrip = async (planId, userId) => {};
+const createTrip = async (planId, user, tripData) => {
+  const { from_date, to_date, maximum_member } = tripData;
+  const id = cuid();
+  const userSaved = await userService.getById(user.userId, user.userId);
+
+  return Trip.create({
+    id,
+    plan_id: planId,
+    created_by: user.userId,
+    status: 'open',
+    from_date,
+    to_date,
+    members: JSON.stringify(userSaved),
+    maximum_member,
+  });
+};
 
 module.exports = {
   getById,

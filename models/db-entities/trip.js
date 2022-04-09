@@ -1,6 +1,6 @@
 'use strict';
 
-const createGuts = require('./model-guts');
+const createGuts = require('../model-guts');
 
 const name = 'Trip';
 const tableName = 'trips';
@@ -25,8 +25,16 @@ module.exports = (knex) => {
     tableName,
     selectableProps,
   });
+  const create = (props) => {
+    return knex
+      .insert(props)
+      .returning(selectableProps)
+      .into(tableName)
+      .timeout(1000);
+  };
 
   return {
     ...guts,
+    create,
   };
 };

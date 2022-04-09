@@ -12,7 +12,7 @@ const getModelFiles = (dir) => {
 };
 
 const initAllModels = () => {
-  const files = getModelFiles(__dirname);
+  const files = getModelFiles(`${__dirname}/db-entities`);
   
   return files.reduce((modelsObject, filename) => {
     const initModel = require(filename);

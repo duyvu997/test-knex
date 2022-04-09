@@ -1,8 +1,8 @@
 'use strict';
 
 const bcrypt = require('bcrypt');
-const createGuts = require('./model-guts');
-const { createError, BAD_REQUEST } = require('../common/error-utils');
+const createGuts = require('../model-guts');
+const { createError, BAD_REQUEST } = require('../../common/error-utils');
 
 const name = 'User';
 const tableName = 'users';

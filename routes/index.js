@@ -8,6 +8,7 @@ const planRoutes = require('./plan');
 const tripRoutes = require('./trip');
 const invitationRoutes = require('./invitation');
 const storiesRoutes = require('./story');
+const villageRoutes = require('./village');
 
 router.use('/users', userRoutes);
 router.use('/conversations', conversationRoutes);
@@ -15,6 +16,7 @@ router.use('/plans', planRoutes);
 router.use('/trips', tripRoutes);
 router.use('/invitations', invitationRoutes);
 router.use('/stories', storiesRoutes);
+router.use('/villages', villageRoutes);
 router.use('/', uploadRoutes);
 router.use('/', metaRoutes);
 

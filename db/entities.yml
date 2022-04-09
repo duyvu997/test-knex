@@ -11,13 +11,23 @@
     - followers:
 
 - Village
-    - villageName:
-    - villageLocation:
+    - name:
+    - location:
     - photos:
     - managers: 
-    - introductions:
+    - introduction:
+    - population:
+    - topography:
+    - seasons:
+    - folklore:
+    - building:
+    - history:
+    - natural:
+    - traffic: 
+    - celebrarity_myth_anecodtes:
+    - traditional_craftsmen: 
+    - foodset:
     - problems: 
-    - culture:
 
 - Plan
   - trips: [tripId1, tripId2, tripId3],

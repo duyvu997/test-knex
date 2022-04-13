@@ -3,9 +3,9 @@ const AWS = require('aws-sdk');
 const uploadToS3 = async (file, tags, isBase64) => {
   const BUCKET_NAME = process.env.BACKUP_BUCKET || '2myvillage';
   const s3 = new AWS.S3({
-    accessKeyId: process.env.AWS_ID || 'AKIASUIGPSY3K5YGQTJV',
+    accessKeyId: process.env.AWS_ID || '',
     secretAccessKey:
-      process.env.AWS_SECRET || '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',
+      process.env.AWS_SECRET || '',
   });
 
   let body = '';

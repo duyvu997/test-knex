@@ -13,6 +13,8 @@ const selectableProps = [
   'background',
   'photos',
   'sections',
+  'location',
+  'village_name',
 ];
 
 module.exports = (knex) => {

@@ -51,7 +51,14 @@ const create = async (user, story) => {
 };
 
 const update = async (user, storyId, story) => {
-  const { trip_id, title, background, sections } = story;
+  const {
+    trip_id,
+    title,
+    background,
+    sections,
+    location,
+    villageName: village_name,
+  } = story;
   const storySaved = await Story.findOne({ id: storyId });
   if (!storySaved) {
     throw createError(BAD_REQUEST, 'story not found');
@@ -64,6 +71,8 @@ const update = async (user, storyId, story) => {
   }
 
   const storyToBeUpdated = {
+    village_name,
+    location,
     title,
     background,
     trip_id,
@@ -75,13 +84,11 @@ const update = async (user, storyId, story) => {
 
 const getAll = async () => {
   const stories = await Story.find({});
-  console.log(stories);
   const result = stories.map((story) => ({
     ...story,
     publisher: story.publisher ? JSON.parse(story.publisher) : null,
     sections: story.sections ? JSON.parse(story.sections) : null,
   }));
-  console.log(result);
   return result;
 };
 

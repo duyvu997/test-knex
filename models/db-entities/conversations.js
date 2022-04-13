@@ -21,7 +21,16 @@ module.exports = (knex) => {
     selectableProps,
   });
 
+  const create = (props) => {
+    return knex
+      .insert(props)
+      .returning(selectableProps)
+      .into(tableName)
+      .timeout(1000);
+  };
+
   return {
     ...guts,
+    create,
   };
 };

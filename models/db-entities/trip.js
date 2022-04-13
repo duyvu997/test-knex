@@ -25,6 +25,7 @@ module.exports = (knex) => {
     tableName,
     selectableProps,
   });
+  
   const create = (props) => {
     return knex
       .insert(props)

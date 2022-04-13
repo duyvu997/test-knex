@@ -7,4 +7,20 @@ const getById = async (req, res) => {
   return res.status(200).send({ ok: true, message: 'ok', data: result });
 };
 
-module.exports = { getById };
+const create = async (req, res) => {
+  const invitationData = req.body || {};
+  const decodedUser = req.decodedUser;
+
+  const result = await invitationService.create(invitationData, decodedUser);
+
+  return res.status(201).send({ ok: true, message: 'ok', data: result });
+};
+
+const getAll = async (req, res) => {
+
+  const result = await invitationService.getAll();
+
+  return res.status(200).send({ ok: true, message: 'ok', data: result });
+};
+
+module.exports = { getById, create, getAll };

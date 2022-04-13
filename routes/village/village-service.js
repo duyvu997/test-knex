@@ -34,45 +34,46 @@ const getAll = async () => {
   return [];
 };
 
-const update = async (planId, planProperties) => {
-  const plan = await Village.findOne({ id: planId });
-  if (!plan) {
+const update = async (villageId, villageData) => {
+  const village = await Village.findOne({ id: villageId });
+
+  if (!village) {
     throw createError(NOT_FOUND, 'plan not found');
   }
-
   const {
-    heading,
-    location,
-    introduction,
-    volunteer_activities,
-    prices,
-    preparing,
-    villageId,
-  } = planProperties;
-  // todo: find by village.
-  const parsedLocation = location && JSON.stringify(location);
-  const parsedVolunteer =
-    volunteer_activities && JSON.stringify(volunteer_activities);
-  const parsedPrices = prices && JSON.stringify(prices);
+    population,
+    topography,
+    seasons,
+    folklore,
+    building,
+    history,
+    natural,
+    traffic,
+    celebrarity,
+    traditional_craftsmen,
+    foodset,
+    problems,
+  } = villageData;
 
-  return Village.update(planId, {
-    village_id: villageId,
-    heading,
-    location: parsedLocation,
-    introduction,
-    volunteer_activities: parsedVolunteer,
-    prices: parsedPrices,
-    status: 'open',
-    preparing,
+  return Village.update(villageId, {
+    population,
+    topography,
+    seasons,
+    folklore,
+    building,
+    history,
+    natural,
+    traffic,
+    celebrarity,
+    traditional_craftsmen,
+    foodset,
+    problems,
   });
 };
-
-const createTrip = async (planId, userId) => {};
 
 module.exports = {
   getById,
   create,
   getAll,
   update,
-  createTrip,
 };

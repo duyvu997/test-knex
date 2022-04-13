@@ -40,7 +40,7 @@ const initTrip = async (req, res) => {
   const planId = req.params.planId;
   const tripData = req.body || {};
   const decodedUser = req.decodedUser;
-  const result = await planService.createTrip(planId, decodedUser, tripData);
+  const result = await planService.initTrip(planId, decodedUser, tripData);
 
   return res.status(200).send({ ok: true, message: 'ok', data: result });
 };

@@ -24,7 +24,7 @@ const selectableProps = [
   'traditional_craftsmen',
   'foodset',
   'problems',
-  'background'
+  'background',
 ];
 
 module.exports = (knex) => {
@@ -109,40 +109,42 @@ module.exports = (knex) => {
       problems,
     } = village;
     if (population) {
-      village.population = JSON.parse(population);
+      village.population = JSON.parse(population.slice(1, -1));
     }
     if (topography) {
-      village.topography = JSON.parse(topography);
+      village.topography = JSON.parse(topography.slice(1, -1));
     }
     if (seasons) {
       village.seasons = JSON.parse(seasons);
     }
     if (folklore) {
-      village.folklore = JSON.parse(folklore);
+      village.folklore = JSON.parse(folklore.slice(1, -1));
     }
     if (building) {
-      village.building = JSON.parse(building);
+      village.building = JSON.parse(building.slice(1, -1));
     }
     if (history) {
-      village.history = JSON.parse(history);
+      village.history = JSON.parse(history.slice(1, -1));
     }
     if (natural) {
-      village.natural = JSON.parse(natural);
+      village.natural = JSON.parse(natural.slice(1, -1));
     }
     if (traffic) {
-      village.traffic = JSON.parse(traffic);
+      village.traffic = JSON.parse(traffic.slice(1, -1));
     }
     if (celebrarity) {
-      village.celebrarity = JSON.parse(celebrarity);
+      village.celebrarity = JSON.parse(celebrarity.slice(1, -1));
     }
     if (traditional_craftsmen) {
-      village.traditional_craftsmen = JSON.parse(traditional_craftsmen);
+      village.traditional_craftsmen = JSON.parse(
+        traditional_craftsmen.slice(1, -1)
+      );
     }
     if (foodset) {
-      village.foodset = JSON.parse(foodset);
+      village.foodset = JSON.parse(foodset.slice(1, -1));
     }
     if (problems) {
-      village.problems = JSON.parse(problems);
+      village.problems = JSON.parse(problems.slice(1, -1));
     }
 
     return village;
@@ -151,6 +153,9 @@ module.exports = (knex) => {
   const create = (props) =>
     beforeSave(props).then((village) => guts.create(village));
 
+  const update = (id, props) =>
+    beforeSave(props).then((village) => guts.update(id, village));
+
   const findOne = (filters) =>
     guts.findOne(filters).then((village) => postFindOne(village));
 
@@ -158,5 +163,6 @@ module.exports = (knex) => {
     ...guts,
     create,
     findOne,
+    update,
   };
 };
